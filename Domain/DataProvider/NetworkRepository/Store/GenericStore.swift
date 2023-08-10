@@ -1,5 +1,5 @@
 //
-//  GeneticStore.swift
+//  GenericStore.swift
 //  MarketCoins
 //
 //  Created by Maria on 21/07/23.
@@ -7,12 +7,12 @@
 
 import Foundation
 
-protocol GeneticStoreProtocol {
+protocol GenericStoreProtocol {
     var error: Error { get set }
     typealias completion<T> = (_ result: T, _ failure: Error?) -> Void
 }
 
-class GenericStoreREquest: GeneticStoreProtocol {
+class GenericStoreRequest: GenericStoreProtocol {
     
     var error = NSError(domain: "", code: 901, userInfo: [NSLocalizedDescriptionKey: "Error getting information"]) as Error
     
