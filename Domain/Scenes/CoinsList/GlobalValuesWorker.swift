@@ -1,5 +1,5 @@
 //
-//  CoinsListWorker.swift
+//  GlobalValuesWorker.swift
 //  MarketCoins
 //
 //  Created by Maria on 14/08/23.
@@ -12,38 +12,30 @@
 
 import UIKit
 
-class CoinsListWorker {
-  
-    private let dataProvider: ListCoinsDataProvider?
-    private var completion: ((Result<[CoinModel]?, CryptocurrenciesError>) -> Void)?
+class GlobalValuesWorker {
+
+    private let dataProvider: GlobalValuesDataProvider?
+    private var completion: ((Result<GlobalModel?, CryptocurrenciesError>) -> Void)?
     
-    init(dataProvider: ListCoinsDataProvider = ListCoinsDataProvider()) {
+    init(dataProvider: GlobalValuesDataProvider = GlobalValuesDataProvider()) {
         self.dataProvider = dataProvider
         self.dataProvider?.delegate = self
     }
     
-    func doFetchListCoins(baseCoin: String,
-                          orderBy: String,
-                          top: Int,
-                          percentagePrice: String,
-                          completion: @escaping ((Result<[CoinModel]?, CryptocurrenciesError>) -> Void)) {
-        dataProvider?.fetchListCoins(by: baseCoin,
-                                     with: nil,
-                                     orderBy: orderBy,
-                                     total: top,
-                                     page: 1,
-                                     percentagePrice: percentagePrice)
+    func doFetchGlobalValues (completion: @escaping ((Result<GlobalModel?, CryptocurrenciesError>) -> Void)) {
+        dataProvider?.fetchGlobalValues()
         self.completion = completion
+        
     }
 }
 
-extension CoinsListWorker: ListCoinsDataProviderDelegate {
+extension GlobalValuesWorker: GlobalValuesDataProviderDelegate {
     
     func success(model: Any) {
         guard let completion = completion else {
             fatalError("Completion not implemented!")
         }
-        completion(.success(model as? [CoinModel]))
+        completion(.success(model as? GlobalModel))
     }
     
     func errorData(_ provider: GenericDataProviderDelegate?, error: Error) {
@@ -61,7 +53,4 @@ extension CoinsListWorker: ListCoinsDataProviderDelegate {
             completion(.failure(.undefinedError))
         }
     }
-    
-    
 }
-
