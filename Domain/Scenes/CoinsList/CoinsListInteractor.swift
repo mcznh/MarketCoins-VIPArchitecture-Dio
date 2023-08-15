@@ -44,6 +44,7 @@ class CoinsListInteractor: CoinsListBusinessLogic, CoinsListDataStore {
             case .success(let globalModel):
                 self.createGlobalValuesResponse(baseCoin: request.baseCoin, global: globalModel)
             case .failure(let error):
+                self.presenter?.presentError(error: error)
             }
         })
     }
@@ -62,22 +63,26 @@ class CoinsListInteractor: CoinsListBusinessLogic, CoinsListDataStore {
             case .success(let listCoinsModel):
                 self.createListCoinsResponse(request: request, listCoins: listCoinsModel)
             case .failure(let error):
+                self.presenter?.presentError(error: error)
             } 
         })
     }
     
 
     private func createGlobalValuesResponse(baseCoin: String, global: GlobalModel?) {
-        if let globalModel {
-            let totalMarketCap = globalModel.data.totalMarketCap.filter { $0.key == baseCoin }
-            let totalVolume = globalModel.data.totalVolume.filter { $0.key == baseCoin }
+        if let global {
+            let totalMarketCap = global.data.totalMarketCap.filter { $0.key == baseCoin }
+            let totalVolume = global.data.totalVolume.filter { $0.key == baseCoin }
             
             let response = CoinsList.FetchGlobalValues.Response(
                 baseCoin: baseCoin,
                 totalMarketCap: totalMarketCap,
-                totalVolume: totalVolume)
-        } else {
+                totalVolume: totalVolume
+            )
             
+            presenter?.presentGlobalValues(response: response)
+        } else {
+            self.presenter?.presentError(error: .undefinedError)
         }
     }
     
@@ -110,7 +115,7 @@ class CoinsListInteractor: CoinsListBusinessLogic, CoinsListDataStore {
                 )
             }
         } else {
-            
+            self.presenter?.presentError(error: .undefinedError)
         }
     }
 }

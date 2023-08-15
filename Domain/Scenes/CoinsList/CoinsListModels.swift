@@ -51,7 +51,7 @@ enum CoinsList {
             let marketCapRank: Int?
             let priceChangePercentage: Double
         }
-        struct viewModel {
+        struct ViewModel {
             struct Coin {
                 let id: String
                 let name: String
