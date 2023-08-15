@@ -21,8 +21,8 @@ enum CoinsList {
     }
     struct Response {
         let baseCoin: String
-        let totalMarketCap: [String: String]
-        let totalVolume: [String: String]
+        let totalMarketCap: [String: Double]
+        let totalVolume: [String: Double]
     }
     struct ViewModel {
         struct GlobalValues {
@@ -44,6 +44,7 @@ enum CoinsList {
             let baseCoin: String
             let id: String
             let symbol: String
+            let name: String
             let image: String
             let currentPrice: Double
             let marketCap: Double

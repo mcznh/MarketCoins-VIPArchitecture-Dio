@@ -27,6 +27,7 @@ class CoinsListWorker {
                           top: Int,
                           percentagePrice: String,
                           completion: @escaping ((Result<[CoinModel]?, CryptocurrenciesError>) -> Void)) {
+        
         dataProvider?.fetchListCoins(by: baseCoin,
                                      with: nil,
                                      orderBy: orderBy,
