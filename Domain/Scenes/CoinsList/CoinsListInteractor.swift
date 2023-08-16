@@ -26,16 +26,15 @@ class CoinsListInteractor: CoinsListBusinessLogic, CoinsListDataStore {
 
     var presenter: CoinsListPresentationLogic?
     var globalValuesWorker: GlobalValuesWorker?
-    var coinListworker: CoinsListWorker?
-    //var name: String = ""
+    var coinListWorker: CoinsListWorker?
   
     init(presenter: CoinsListPresentationLogic = CoinsListPresenter(),
          globalValuesWorker: GlobalValuesWorker = GlobalValuesWorker(),
-         coinsListworker: CoinsListWorker = CoinsListWorker()) {
+         coinsListWorker: CoinsListWorker = CoinsListWorker()) {
         
         self.presenter = presenter
         self.globalValuesWorker = globalValuesWorker
-        self.coinListworker = coinsListworker
+        self.coinListWorker = coinsListWorker
     }
     
     func doFetchGlobalValues(request: CoinsList.FetchGlobalValues.Request) {
@@ -48,13 +47,14 @@ class CoinsListInteractor: CoinsListBusinessLogic, CoinsListDataStore {
             }
         })
     }
+    
     func doFetchListCoins(request: CoinsList.FetchListCoins.Request) {
         let baseCoin = request.baseCoin
         let orderBy = request.orderBy
         let top = request.top
         let percentagePrice = request.pricePercentage
         
-        CoinsListWorker?.doFetchListCoins(baseCoin: baseCoin,
+        coinListWorker?.doFetchListCoins(baseCoin: baseCoin,
                                           orderBy: orderBy,
                                           top: top,
                                           percentagePrice: percentagePrice,

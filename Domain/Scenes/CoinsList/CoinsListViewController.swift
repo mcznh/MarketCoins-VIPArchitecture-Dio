@@ -67,7 +67,9 @@ class CoinsListViewController: UIViewController {
     // MARK: View lifecycle
 
     override func viewDidLoad() {
-    super.viewDidLoad()
+        super.viewDidLoad()
+        doFetchGlobalValues()
+        doFetchListCoins()
    
     }
 
@@ -102,7 +104,3 @@ extension CoinsListViewController: CoinsListDisplayLogic {
     }
     
 }
-
-
-
-
