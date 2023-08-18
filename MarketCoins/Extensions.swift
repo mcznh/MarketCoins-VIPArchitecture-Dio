@@ -5,7 +5,7 @@
 //  Created by Maria on 09/08/23.
 //
 
-import Foundation
+import UIKit
 
 extension URL {
     
@@ -66,4 +66,35 @@ extension Double {
     }
 }
 
+extension UIImageView {
+    
+    func loadImage(from url: String) {
+        guard let url = URL(string: url) else { return }
+        
+        DispatchQueue.global().async {
+            do {
+                let data = try Data(contentsOf: url)
+                DispatchQueue.main.async {
+                    self.image = UIImage(data: data)
+                }
+            } catch {}
+        }
+    }
+}
+
+extension UIImageView {
+    
+    func loadImage(url: String) {
+        guard let url = URL(string: url) else { return }
+        
+        DispatchQueue.global().async {
+            do {
+                let data = try Data(contentsOf: url)
+                DispatchQueue.main.async {
+                    self.image = UIImage(data: data)
+                }
+            } catch {}
+        }
+    }
+}
 
