@@ -88,9 +88,12 @@ class CoinsListViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let nib = UINib(nibName: CoinHeaderView.idetifier, bundle: nil)
+        listCoinsTableView.register(nib, forHeaderFooterViewReuseIdentifier: CoinHeaderView.idetifier)
+        
         doFetchGlobalValues()
         doFetchListCoins()
-   
     }
 
     func doFetchGlobalValues() {
@@ -108,6 +111,8 @@ class CoinsListViewController: UIViewController {
         interactor?.doFetchListCoins(request: request)
     }
 }
+
+// MARK: Extensions
 
 extension CoinsListViewController: CoinsListDisplayLogic {
     
@@ -132,14 +137,30 @@ extension CoinsListViewController: CoinsListDisplayLogic {
 }
 
 extension CoinsListViewController: UICollectionViewDelegate {
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if let header = tableView.dequeueReusableCell(withIdentifier: CoinHeaderView.idetifier) as? CoinHeaderView {
+            return header
+        }
+        return UIView()
+    }
 }
 
 extension CoinsListViewController: UICollectionViewDataSource {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == globalCollectionView {
             return globalViewModel?.globalValues.count ?? 0
         }
         return 4
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 56
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
