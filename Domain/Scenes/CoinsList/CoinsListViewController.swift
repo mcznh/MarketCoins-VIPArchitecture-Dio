@@ -40,6 +40,12 @@ class CoinsListViewController: UIViewController {
         }
     }
     
+    private lazy var coinsFilterView: FiltersView = {
+        let filterView = FiltersView()
+        filterView.isHidden = true
+        return filterView
+    }()
+    
     private var globalViewModel: CoinsList.FetchGlobalValues.ViewModel?
     private var coinsViewModel: CoinsList.FetchListCoins.ViewModel?
 
@@ -88,6 +94,7 @@ class CoinsListViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.addSubview(coinsFilterView)
         
         let nib = UINib(nibName: CoinHeaderView.idetifier, bundle: nil)
         listCoinsTableView.register(nib, forHeaderFooterViewReuseIdentifier: CoinHeaderView.idetifier)
@@ -138,11 +145,8 @@ extension CoinsListViewController: CoinsListDisplayLogic {
 
 extension CoinsListViewController: UICollectionViewDelegate {
     
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        if let header = tableView.dequeueReusableCell(withIdentifier: CoinHeaderView.idetifier) as? CoinHeaderView {
-            return header
-        }
-        return UIView()
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        coinsFilterView.isHidden = false
     }
 }
 
@@ -187,7 +191,15 @@ extension CoinsListViewController: UICollectionViewDataSource {
     }
 }
 
-extension CoinsListViewController: UITableViewDelegate {}
+extension CoinsListViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if let header = tableView.dequeueReusableCell(withIdentifier: CoinHeaderView.idetifier) as? CoinHeaderView {
+            return header
+        }
+        return UIView()
+    }
+}
 
 extension CoinsListViewController: UITableViewDataSource {
     

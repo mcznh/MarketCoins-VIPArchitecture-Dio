@@ -12,6 +12,7 @@
 		465B31CD2AA0220400F9CDBA /* GlobalValuesViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 465B31CC2AA0220400F9CDBA /* GlobalValuesViewCell.swift */; };
 		465B31D12AA0226E00F9CDBA /* FilterViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 465B31D02AA0226E00F9CDBA /* FilterViewCell.swift */; };
 		465B31D32AA022B200F9CDBA /* CoinViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 465B31D22AA022B200F9CDBA /* CoinViewCell.swift */; };
+		46DC60592AA22B17006223D1 /* FiltersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46DC60582AA22B17006223D1 /* FiltersView.swift */; };
 		4C2F0AF22A83458100583A66 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2F0AF12A83458100583A66 /* Extensions.swift */; };
 		4C6451892A6A170900A85FA7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6451882A6A170900A85FA7 /* AppDelegate.swift */; };
 		4C64518B2A6A170900A85FA7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C64518A2A6A170900A85FA7 /* SceneDelegate.swift */; };
@@ -49,6 +50,7 @@
 		465B31CC2AA0220400F9CDBA /* GlobalValuesViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalValuesViewCell.swift; sourceTree = "<group>"; };
 		465B31D02AA0226E00F9CDBA /* FilterViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewCell.swift; sourceTree = "<group>"; };
 		465B31D22AA022B200F9CDBA /* CoinViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinViewCell.swift; sourceTree = "<group>"; };
+		46DC60582AA22B17006223D1 /* FiltersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersView.swift; sourceTree = "<group>"; };
 		4C2F0AF12A83458100583A66 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		4C6451852A6A170900A85FA7 /* MarketCoins.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarketCoins.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C6451882A6A170900A85FA7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -134,6 +136,7 @@
 				4C2F0AF12A83458100583A66 /* Extensions.swift */,
 				4CB66CD42A8ADB2C000844F7 /* CryptocurrenciesError.swift */,
 				4629E9DA2AA171B60046BC49 /* CoinHeaderView.xib */,
+				46DC60582AA22B17006223D1 /* FiltersView.swift */,
 			);
 			path = MarketCoins;
 			sourceTree = "<group>";
@@ -326,6 +329,7 @@
 				4CB66CD02A8A76A8000844F7 /* CoinsListViewController.swift in Sources */,
 				4C6789562A83D3D70033ED11 /* CoinsRouter.swift in Sources */,
 				4CE4380B2A8485E6000FB24C /* CoinsStore.swift in Sources */,
+				46DC60592AA22B17006223D1 /* FiltersView.swift in Sources */,
 				4C6789582A83D41E0033ED11 /* GlobalRouter.swift in Sources */,
 				465B31D32AA022B200F9CDBA /* CoinViewCell.swift in Sources */,
 				4CB66CCD2A8A76A8000844F7 /* CoinsListWorker.swift in Sources */,
